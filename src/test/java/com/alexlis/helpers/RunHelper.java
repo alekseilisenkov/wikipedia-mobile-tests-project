@@ -34,5 +34,4 @@ public class RunHelper {
                 throw new RuntimeException("Incorrect device host");
         }
     }
-
 }

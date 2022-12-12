@@ -1,9 +1,11 @@
-package com.alexlis.tests.local;
+package com.alexlis.tests;
 
 import com.alexlis.config.RunConfig;
 import com.alexlis.helpers.Attach;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.appium.java_client.MobileBy;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -11,12 +13,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import static com.alexlis.helpers.RunHelper.runHelper;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
 public class TestBase {
 
     private final RunConfig config = ConfigFactory.create(RunConfig.class, System.getProperties());
+
+    SelenideElement textView = $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")),
+            forwardButton = $(MobileBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")),
+            getStartedButton = $(MobileBy.id("org.wikipedia.alpha:id/fragment_onboarding_done_button")),
+            searchContainer = $(MobileBy.id("org.wikipedia.alpha:id/search_container"));
 
     @BeforeAll
     public static void setup() {
@@ -41,7 +48,6 @@ public class TestBase {
         if (config.deviceHost().equals("selenoid")) {
             Attach.addVideo();
         }
-
         closeWebDriver();
     }
 }

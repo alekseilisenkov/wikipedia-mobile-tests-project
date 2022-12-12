@@ -32,4 +32,3 @@ public class SelenoidAndroidDriver implements WebDriverProvider {
         }
     }
 }
-

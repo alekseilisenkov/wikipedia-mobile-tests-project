@@ -20,7 +20,6 @@ public class LocalAndroidDriver implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
-
         desiredCapabilities.setCapability("platformName", "android");
         desiredCapabilities.setCapability("deviceName", localConfig.emulatorName());
         desiredCapabilities.setCapability("version", localConfig.emulatorVersion());

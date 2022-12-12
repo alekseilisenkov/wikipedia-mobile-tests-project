@@ -24,7 +24,6 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
-
         desiredCapabilities.setCapability("browserstack.user", browserstackConfig.user());
         desiredCapabilities.setCapability("browserstack.key", browserstackConfig.key());
         desiredCapabilities.setCapability("app", browserstackConfig.app());
@@ -34,7 +33,6 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("project", "Qa guru final project mobile");
         desiredCapabilities.setCapability("build", "Java Android");
         desiredCapabilities.setCapability("name", "wiki_tests");
-
         try {
             return new AndroidDriver<>(new URL("http://hub-cloud.browserstack.com/wd/hub"), desiredCapabilities);
         } catch (MalformedURLException e) {
